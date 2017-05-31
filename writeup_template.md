@@ -37,6 +37,7 @@ The goals / steps of this project are the following:
 
 #### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
+#### 1. First, I loaded the dataset using pickle package. Then, I mostly used functions like len and numpy functions (unique, size) to extract preliminary informations of the dataset. 
 I used the pandas library to calculate summary statistics of the traffic
 signs data set:
 
