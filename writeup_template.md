@@ -43,9 +43,7 @@ The goals / steps of this project are the following:
 * Image data shape = (34799, 32, 32, 3) - *X_train.shape*
 * Number of classes = 43 - *np.size(np.unique(y_train))*
 
-####2. Include an exploratory visualization of the dataset.
-
-Here I visualized one image per class of the dataset, as can be seen below. For importing the .csv file I used pandas.
+#### 2. Here I visualized one image per class of the dataset, as can be seen below. For importing the .csv file I used pandas.
 
 
 
