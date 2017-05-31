@@ -45,7 +45,10 @@ The goals / steps of this project are the following:
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here I visualized one image per class of the dataset, as can be seen below. For importing the .csv file I used pandas.
+
+
+
 
 ![alt text][image1]
 
