@@ -1,5 +1,7 @@
 #**Traffic Sign Recognition** 
+
 Student: Patrícia C. P. Pampanelli
+
 Nanodegree: Self Driving Cars
 
 ---
