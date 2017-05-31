@@ -37,9 +37,12 @@ The goals / steps of this project are the following:
 
 #### 1. First, I imported the dataset using [pickle module](https://docs.python.org/2/library/pickle.html#module-pickle). Then, I mostly used functions like len and numpy functions (unique, size) to extract preliminary informations of the dataset. 
 
-
-
-
+* Number of training examples = 34799
+* *  
+* Number of testing examples = 12630
+* Number of validating examples = 4410
+* Image data shape = (34799, 32, 32, 3)
+* Number of classes = 43
 
 ####2. Include an exploratory visualization of the dataset.
 
