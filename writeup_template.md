@@ -49,8 +49,11 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
+First image of each class:
+
 ![Data Exploration][image1]
 
+Second image of each class:
 ![Data Exploration][image1.1]
 
 ### Design and Test a Model Architecture
