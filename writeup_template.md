@@ -14,7 +14,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
+[image1]: ./images/image1_data_exploration.png "Data Exploration"
+[image1.1]: ./images/image1_data_exploration.png "Data Exploration"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
@@ -48,7 +49,9 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-###### ***TODO***
+![Data Exploration][image1]
+
+![Data Exploration][image1.1]
 
 ### Design and Test a Model Architecture
 
