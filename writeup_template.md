@@ -34,9 +34,9 @@ The goals / steps of this project are the following:
 
 You're reading it! and here is a link to my [project code](https://github.com/patriciapampanelli/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
-### Data Set Summary & Exploration
+### **Data Set Summary & Exploration**
 
-#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+#### **1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.**
 
 I used the numpy library to calculate summary statistics of the traffic
 signs data set:
@@ -47,7 +47,7 @@ signs data set:
 * The shape of a traffic sign image is (32, 32, 3)
 * The number of unique classes/labels in the data set is 43
 
-#### 2. Include an exploratory visualization of the dataset.
+#### **2. Include an exploratory visualization of the dataset.**
 
 ***First image of each class:***
 
@@ -57,37 +57,56 @@ signs data set:
 
 ![Data Exploration][image1.1]
 
-### Design and Test a Model Architecture
+### **Design and Test a Model Architecture**
 
-#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+#### **1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)**
 
+- Preprocessing steps:
+	- Normalize images
+	- Converts input images from RGB to Grayscale using TensorFlow
+		- [tf.image.rgb_to_grayscale](https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/image/rgb_to_grayscale)
+	- Performs Gamma Correction on the image using TensorFlow
+		- [tf.image.adjust_gamma](https://www.tensorflow.org/api_docs/python/tf/image/adjust_gamma) 
 
-###### ***TODO***
+I decided to these three common preprocessing techniques that are very common in classification problems.
 
-
-#### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
-
-###### ***TODO***
+#### **2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.**
 
 My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Input         		| 32x32x1 Gray scale image   					| 
+| Convolution 5x5     	| 1x1 stride, valid padding						|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Max pooling	      	| 2x2 stride  					 				|
+| Convolution 5x5	    | 1x1 stride, valid padding      				|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride  					 				|
+| Flatten				|												|
+| Fully connected		| Input 400, Output 200   						|
+| RELU					|												|
+| Fully connected		| Input 200, Output 120   						|
+| RELU					|												|
+| Fully connected		| Input 120, Output 43   						|
  
-
+It is important to say that I tried to include dropout layers between convolutional layers and fully connected layers. I tried this strategy in order to prevent overfitting, but no improvement was obtained with respect to accuracy of the testing set.
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-###### ***TODO***
+I decided to used an exponential decay during the training process. That's because the learning rate tends to be more effective if it's higher at the first steps and, then, goes down as the neural network learns. I used:
+
+[tf.train.exponential_decay](https://www.tensorflow.org/api_docs/python/tf/train/exponential_decay)
+Parameters:
+	- learning_rate = 0.001
+	- decay_steps = 50*num_examples/BATCH_SIZE
+	- decay_rate = 0.1
+	- staircase=True
+
+These are the others hyperparameters:
+
+	- EPOCHS = 200
+	- BATCH_SIZE = 128
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
