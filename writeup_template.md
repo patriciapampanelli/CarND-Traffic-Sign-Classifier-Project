@@ -63,10 +63,15 @@ signs data set:
 
 - Preprocessing steps:
 	- Normalize images
-	- Converts input images from RGB to Grayscale using TensorFlow
-		- [tf.image.rgb_to_grayscale](https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/image/rgb_to_grayscale)
 	- Performs Gamma Correction on the image using TensorFlow
 		- [tf.image.adjust_gamma](https://www.tensorflow.org/api_docs/python/tf/image/adjust_gamma) 
+		- Parameters:
+		    - gamma = 0.9
+		    - gain = 1
+ 	- Converts input images from RGB to Grayscale using TensorFlow (it is not used in the final solution)
+	- [tf.image.rgb_to_grayscale](https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/image/rgb_to_grayscale)
+- Contrast Limited Adaptive Histogram Equalization (CLAHE) (it is not used in the final solution)
+    - [skimage.exposure.equalize_adapthist](http://scikit-image.org/docs/dev/api/skimage.exposure.html#skimage.exposure.equalize_adapthist)
 
 I decided to these three common preprocessing techniques that are very common in classification problems.
 
@@ -99,9 +104,10 @@ I decided to used an exponential decay during the training process. That's becau
 [tf.train.exponential_decay](https://www.tensorflow.org/api_docs/python/tf/train/exponential_decay)
 Parameters:
 	- learning_rate = 0.001
+	- num_examples = 34799
 	- decay_steps = 50*num_examples/BATCH_SIZE
 	- decay_rate = 0.1
-	- staircase=True
+	- staircase = True
 
 These are the others hyperparameters:
 
