@@ -121,12 +121,26 @@ These are the others hyperparameters:
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
+My final model results were:
+* training set accuracy of 1.000
+* validation set accuracy of 0.937
+* test set accuracy of 0.925
+
+I tried an iterative approach until de desirable validation accuracy was obtanied. First a tried to modified the model architecture varying the number os neurons of the fully connected layers:
+
+    - Fully connected: Input 400, Output 120
+    - RELU
+    - Fully connected: Input 120, Output 80
+    - RELU
+    - Fully connected: Input 80, Output 43
+
+This model didn't improved the validation accuracy. Then I tried to add dropout layers after the convolutional and the fully connected layers:
+
+
+
 ###### ***TODO***
 
-My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
