@@ -166,6 +166,7 @@ I used these images in order to evaluate the proposed model:
 
 <img src="./data/image1.jpg" width="75" alt="Stop"> <img src="./data/image2.jpg" width="75" alt="Children crossing"> <img src="./data/image3.jpg" width="75" alt="Bumpy road"> <img src="./data/image4.jpg" width="75" alt="Right-of-way at the next intersection"> <img src="./data/image5.jpg" width="75" alt="Road work"> <img src="./data/image6.jpg" width="75" alt="Stop"> <img src="./data/image7.jpg" width="75" alt="Speed limit (60km/h)"> <img src="./data/image8.jpg" width="75" alt="Bumpy road"> <img src="./data/image9.jpg" width="75" alt="Roundabout mandatory"> <img src="./data/image10.jpg" width="75" alt="No entry">
 
+The first and the sixth image don't have the traffic sign perfectly cropped. In this sense, these images differ from the dataset for which the model was trained. Because of this, the trained model for traffic signals should have difficulty classifying these images. Some images have a small border, which can also make classification difficult. Finally, a small text can also make it difficult to classify.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -203,7 +204,3 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 
 For the second image ... 
 
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
-
-###### ***TODO***
