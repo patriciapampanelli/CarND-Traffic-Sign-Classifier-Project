@@ -174,14 +174,19 @@ The first and the sixth image don't have the traffic sign perfectly cropped. In 
 
 Here are the results of the prediction:
 
+				 											|
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
-
+| Stop      		|    		Priority road						| 
+| Children crossing     			|  				Bicycles crossing					|
+| Bumpy road					| 					Right-of-way at the next intersection					|
+| Right-of-way at the next intersection	      		|  			Wild animals crossing	 				|
+| Road work			|     		Priority road				|
+| Stop			|       Priority road						|
+| Speed limit (60km/h)			|       Bumpy road						|
+| Bumpy road			|   						|
+| Roundabout mandatory			|       							|
+| No entry			|      							|
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
 
