@@ -17,7 +17,7 @@ The goals / steps of this project are the following:
 [image1]: ./images/image1_data_exploration.png "Data Exploration"
 [image1.1]: ./images/image1_data_exploration.png "Data Exploration"
 
-[image2]: ./data/image1.jpg "Stop"
+[image2=50x50]: ./data/image1.jpg "Stop"
 [image3]: ./data/image2.jpg "Children crossing"
 [image4]: ./data/image3.jpg "Bumpy road"
 [image5]: ./data/image4.jpg "Right-of-way at the next intersection"
@@ -175,7 +175,7 @@ This approach improved the model and I decided to finish the project with that. 
 
 I used these images in order to evaluate the proposed model:
 
-![Stop][image2]  ![Children crossing][image3] ![Bumpy road][image4] ![Right-of-way at the next intersection][image5] ![Road work][image6] ![Stop][image7] ![Speed limit (60km/h)][image8] ![Bumpy road][image9] ![Roundabout mandatory][image10] ![No entry][image11]
+![Stop](image2)  ![Children crossing][image3] ![Bumpy road][image4] ![Right-of-way at the next intersection][image5] ![Road work][image6] ![Stop][image7] ![Speed limit (60km/h)][image8] ![Bumpy road][image9] ![Roundabout mandatory][image10] ![No entry][image11]
 
 
 
