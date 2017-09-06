@@ -164,21 +164,7 @@ This approach improved the model and I decided to finish the project with that. 
 
 I used these images in order to evaluate the proposed model:
 
-<img src="./data/image1.jpg" width="50" alt="Stop">
-
-[image2=50x50]: ./data/image1.jpg "Stop"
-[image3]: ./data/image2.jpg "Children crossing"
-[image4]: ./data/image3.jpg "Bumpy road"
-[image5]: ./data/image4.jpg "Right-of-way at the next intersection"
-[image6]: ./data/image5.jpg "Road work"
-[image7]: ./data/image6.jpg "Stop"
-[image8]: ./data/image7.jpg "Speed limit (60km/h)"
-[image9]: ./data/image8.jpg "Bumpy road"
-[image10]: ./data/image9.jpg "Roundabout mandatory"
-[image11]: ./data/image10.jpg "No entry"
-
-![Stop](image2)  ![Children crossing][image3] ![Bumpy road][image4] ![Right-of-way at the next intersection][image5] ![Road work][image6] ![Stop][image7] ![Speed limit (60km/h)][image8] ![Bumpy road][image9] ![Roundabout mandatory][image10] ![No entry][image11]
-
+<img src="./data/image1.jpg" width="75" alt="Stop"> <img src="./data/image2.jpg" width="75" alt="Children crossing"> <img src="./data/image3.jpg" width="75" alt="Bumpy road"> <img src="./data/image4.jpg" width="75" alt="Right-of-way at the next intersection"> <img src="./data/image5.jpg" width="75" alt="Road work"> <img src="./data/image6.jpg" width="75" alt="Stop"> <img src="./data/image7.jpg" width="75" alt="Speed limit (60km/h)"> <img src="./data/image8.jpg" width="75" alt="Bumpy road"> <img src="./data/image9.jpg" width="75" alt="Roundabout mandatory"> <img src="./data/image10.jpg" width="75" alt="No entry">
 
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
