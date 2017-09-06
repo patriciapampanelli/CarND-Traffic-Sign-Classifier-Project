@@ -17,17 +17,6 @@ The goals / steps of this project are the following:
 [image1]: ./images/image1_data_exploration.png "Data Exploration"
 [image1.1]: ./images/image1_data_exploration.png "Data Exploration"
 
-[image2=50x50]: ./data/image1.jpg "Stop"
-[image3]: ./data/image2.jpg "Children crossing"
-[image4]: ./data/image3.jpg "Bumpy road"
-[image5]: ./data/image4.jpg "Right-of-way at the next intersection"
-[image6]: ./data/image5.jpg "Road work"
-[image7]: ./data/image6.jpg "Stop"
-[image8]: ./data/image7.jpg "Speed limit (60km/h)"
-[image9]: ./data/image8.jpg "Bumpy road"
-[image10]: ./data/image9.jpg "Roundabout mandatory"
-[image11]: ./data/image10.jpg "No entry"
-
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -174,6 +163,19 @@ This approach improved the model and I decided to finish the project with that. 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 I used these images in order to evaluate the proposed model:
+
+<img src="./data/image1.jpg" width="50" alt="Stop">
+
+[image2=50x50]: ./data/image1.jpg "Stop"
+[image3]: ./data/image2.jpg "Children crossing"
+[image4]: ./data/image3.jpg "Bumpy road"
+[image5]: ./data/image4.jpg "Right-of-way at the next intersection"
+[image6]: ./data/image5.jpg "Road work"
+[image7]: ./data/image6.jpg "Stop"
+[image8]: ./data/image7.jpg "Speed limit (60km/h)"
+[image9]: ./data/image8.jpg "Bumpy road"
+[image10]: ./data/image9.jpg "Roundabout mandatory"
+[image11]: ./data/image10.jpg "No entry"
 
 ![Stop](image2)  ![Children crossing][image3] ![Bumpy road][image4] ![Right-of-way at the next intersection][image5] ![Road work][image6] ![Stop][image7] ![Speed limit (60km/h)][image8] ![Bumpy road][image9] ![Roundabout mandatory][image10] ![No entry][image11]
 
