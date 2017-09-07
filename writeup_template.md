@@ -177,16 +177,17 @@ Here are the results of the prediction:
 				 											|
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop      		|    		Priority road						| 
-| Children crossing     			|  				Bicycles crossing					|
-| Bumpy road					| 					Right-of-way at the next intersection					|
-| Right-of-way at the next intersection	      		|  			Wild animals crossing	 				|
-| Road work			|     		Priority road				|
-| Stop			|       Priority road						|
-| Speed limit (60km/h)			|       Bumpy road						|
-| Bumpy road			|   						|
-| Roundabout mandatory			|       							|
-| No entry			|      							|
+| Stop      |    		Priority road						| 
+| Bumpy road	| 	Bumpy road	|
+| Right-of-way at the next intersection |	Right-of-way at the next intersection|
+| Road work			|   Wild animals crossing	|
+| Stop			|   Priority road  |
+| Speed limit (60km/h)		|   No passing	|
+| Bumpy road	|   	Dangerous curve to the right	|
+| Roundabout mandatory	|      Roundabout mandatory	|
+| No entry			|      No entry	|
+| Children crossing    	|  	Children crossing	|
+
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
 
