@@ -174,7 +174,7 @@ The first and the sixth image don't have the traffic sign perfectly cropped. In 
 
 Here are the results of the prediction:
 
-				 											|
+				 											
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Stop      |    		Priority road						| 
