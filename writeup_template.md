@@ -16,13 +16,6 @@ The goals / steps of this project are the following:
 
 [image1]: ./images/image1_data_exploration.png "Data Exploration"
 [image1.1]: ./images/image1_data_exploration.png "Data Exploration"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -121,33 +114,59 @@ These are the others hyperparameters:
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-###### ***TODO***
-
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 1.000
+* validation set accuracy of 0.937
+* test set accuracy of 0.925
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+I tried an iterative approach until de desirable validation accuracy was obtanied. First a tried to modified the model architecture varying the number os neurons of the fully connected layers:
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+    - Fully connected: Input 400, Output 120
+    - RELU
+    - Fully connected: Input 120, Output 80
+    - RELU
+    - Fully connected: Input 80, Output 43
+
+This model didn't improved the validation accuracy. Looking at the validation accuracy I relized that the model is overfitted. Then I tried to add dropout layers after the convolutional and the fully connected layers:
+
+- Input: 32x32x1
+- Convolution: 5x5, 1x1 stride, valid padding
+- RELU
+- Max pooling: 2x2 stride
+- Dropout: 0.9
+- Convolution: 5x5, 1x1 stride, valid padding
+- RELU
+- Max pooling: 2x2 stride
+- Dropout: 0.9 
+- Flatten
+- Fully connected: Input 400, Output 120
+- RELU
+- Dropout: 0.9
+- Fully connected: Input 120, Output 80
+- RELU
+- Dropout: 0.9
+- Fully connected: Input 80, Output 43
+
+Finally, with no significant improvements I decided to modified the training learning rate using an exponential decay:
+
+*starter_learning_rate = 0.001*
+*EPOCHS = 200*
+*BATCH_SIZE = 128*
+*num_examples = len(X_train)*
+*global_step = tf.Variable(0, trainable=False)*
+*learning_rate = tf.train.exponential_decay(starter_learning_rate, global_step, 50*num_examples/BATCH_SIZE, 0.1, staircase=True)*
+
+This approach improved the model and I decided to finish the project with that. It makes sense since as the network learns the learning rate should be lower.
 
 ### Test a Model on New Images
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-###### ***TODO***
+I used these images in order to evaluate the proposed model:
 
-The first image might be difficult to classify because ...
+<img src="./data/image1.jpg" width="75" alt="Stop"> <img src="./data/image2.jpg" width="75" alt="Children crossing"> <img src="./data/image3.jpg" width="75" alt="Bumpy road"> <img src="./data/image4.jpg" width="75" alt="Right-of-way at the next intersection"> <img src="./data/image5.jpg" width="75" alt="Road work"> <img src="./data/image6.jpg" width="75" alt="Stop"> <img src="./data/image7.jpg" width="75" alt="Speed limit (60km/h)"> <img src="./data/image8.jpg" width="75" alt="Bumpy road"> <img src="./data/image9.jpg" width="75" alt="Roundabout mandatory"> <img src="./data/image10.jpg" width="75" alt="No entry">
+
+The first and the sixth image don't have the traffic sign perfectly cropped. In this sense, these images differ from the dataset for which the model was trained. Because of this, the trained model for traffic signals should have difficulty classifying these images. Some images have a small border, which can also make classification difficult. Finally, a small text can also make it difficult to classify.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -155,14 +174,19 @@ The first image might be difficult to classify because ...
 
 Here are the results of the prediction:
 
+				 											|
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
-
+| Stop      		|    		Priority road						| 
+| Children crossing     			|  				Bicycles crossing					|
+| Bumpy road					| 					Right-of-way at the next intersection					|
+| Right-of-way at the next intersection	      		|  			Wild animals crossing	 				|
+| Road work			|     		Priority road				|
+| Stop			|       Priority road						|
+| Speed limit (60km/h)			|       Bumpy road						|
+| Bumpy road			|   						|
+| Roundabout mandatory			|       							|
+| No entry			|      							|
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
 
@@ -185,7 +209,3 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 
 For the second image ... 
 
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
-
-###### ***TODO***
