@@ -173,7 +173,6 @@ The first and the sixth image don't have the traffic sign perfectly cropped. In 
 ###### ***TODO***
 
 Here are the results of the prediction:
-
 				 											
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -187,7 +186,6 @@ Here are the results of the prediction:
 | Roundabout mandatory	|      Roundabout mandatory	|
 | No entry			|      No entry	|
 | Children crossing    	|  	Children crossing	|
-
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
 
