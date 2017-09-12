@@ -54,7 +54,7 @@ signs data set:
 
 #### **1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)**
 
-I decided to these three common preprocessing techniques that are very common in classification problems.
+I decided experiment these preprocessing techniques that are very common in classification problems.
 
 - Preprocessing steps used in the final solution:
 	- Contrast Limited Adaptive Histogram Equalization (CLAHE) (it is not used in the final solution)
