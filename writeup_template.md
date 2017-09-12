@@ -54,23 +54,23 @@ signs data set:
 
 #### **1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)**
 
-I decided to these three common preprocessing techniques that are very common in classification problems.
+I decided experiment these preprocessing techniques that are very common in classification problems.
 
 - Preprocessing steps used in the final solution:
+	- Contrast Limited Adaptive Histogram Equalization (CLAHE)
+	    - [skimage.exposure.equalize_adapthist](http://scikit-image.org/docs/dev/api/skimage.exposure.html#skimage.exposure.equalize_adapthist)
+
+- *Other images processing techniques not used in the final solution*:
+	- Converts input images from RGB to Grayscale using TensorFlow
+		- [tf.image.rgb_to_grayscale](https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/image/rgb_to_grayscale)
+	- Median filter:
+		- [skimage.filters.rank.median](http://scikit-image.org/docs/dev/api/skimage.filters.rank.html#skimage.filters.rank.median)
 	- Normalize images
 	- Performs Gamma Correction on the image using TensorFlow
 		- [tf.image.adjust_gamma](https://www.tensorflow.org/api_docs/python/tf/image/adjust_gamma) 
 		- Parameters:
 		    - gamma = 0.9
 		    - gain = 1
-
-- *Other images processing techniques not used in the final solution*:
-	- Contrast Limited Adaptive Histogram Equalization (CLAHE) (it is not used in the final solution)
-	    - [skimage.exposure.equalize_adapthist](http://scikit-image.org/docs/dev/api/skimage.exposure.html#skimage.exposure.equalize_adapthist)
-	- Converts input images from RGB to Grayscale using TensorFlow
-		- [tf.image.rgb_to_grayscale](https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/image/rgb_to_grayscale)
-	- Median filter:
-		- [skimage.filters.rank.median](http://scikit-image.org/docs/dev/api/skimage.filters.rank.html#skimage.filters.rank.median)
 	
 
 #### **2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.**
@@ -87,11 +87,11 @@ My final model consisted of the following layers:
 | RELU					|												|
 | Max pooling	      	| 2x2 stride  					 				|
 | Flatten				|												|
-| Fully connected		| Input 400, Output 200   						|
+| Fully connected		| Input 400, Output 120   						|
 | RELU					|												|
-| Fully connected		| Input 200, Output 120   						|
+| Fully connected		| Input 120, Output 84   						|
 | RELU					|												|
-| Fully connected		| Input 120, Output 43   						|
+| Fully connected		| Input 84, Output 43   						|
  
 It is important to say that I tried to include dropout layers between convolutional layers and fully connected layers. I tried this strategy in order to prevent overfitting, but no improvement was obtained with respect to accuracy of the testing set.
 
@@ -109,23 +109,23 @@ Parameters:
 
 These are the others hyperparameters:
 
-	- EPOCHS = 200
+	- EPOCHS = 50
 	- BATCH_SIZE = 128
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 * training set accuracy of 1.000
-* validation set accuracy of 0.937
-* test set accuracy of 0.925
+* validation set accuracy of 0.961
+* test set accuracy of 0.944
 
 I tried an iterative approach until de desirable validation accuracy was obtanied. First a tried to modified the model architecture varying the number os neurons of the fully connected layers:
 
     - Fully connected: Input 400, Output 120
     - RELU
-    - Fully connected: Input 120, Output 80
+    - Fully connected: Input 120, Output 84
     - RELU
-    - Fully connected: Input 80, Output 43
+    - Fully connected: Input 84, Output 43
 
 This model didn't improved the validation accuracy. Looking at the validation accuracy I relized that the model is overfitted. Then I tried to add dropout layers after the convolutional and the fully connected layers:
 
@@ -142,10 +142,10 @@ This model didn't improved the validation accuracy. Looking at the validation ac
 - Fully connected: Input 400, Output 120
 - RELU
 - Dropout: 0.9
-- Fully connected: Input 120, Output 80
+- Fully connected: Input 120, Output 84
 - RELU
 - Dropout: 0.9
-- Fully connected: Input 80, Output 43
+- Fully connected: Input 84, Output 43
 
 Finally, with no significant improvements I decided to modified the training learning rate using an exponential decay:
 
@@ -166,45 +166,111 @@ I used these images in order to evaluate the proposed model:
 
 <img src="./data/image01.jpg" width="75" alt="Stop"> <img src="./data/image02.jpg" width="75" alt="Children crossing"> <img src="./data/image03.jpg" width="75" alt="Bumpy road"> <img src="./data/image04.jpg" width="75" alt="Right-of-way at the next intersection"> <img src="./data/image05.jpg" width="75" alt="Road work"> <img src="./data/image06.jpg" width="75" alt="Stop"> <img src="./data/image07.jpg" width="75" alt="Speed limit (60km/h)"> <img src="./data/image08.jpg" width="75" alt="Bumpy road"> <img src="./data/image09.jpg" width="75" alt="Roundabout mandatory"> <img src="./data/image10.jpg" width="75" alt="No entry">
 
-The first and the sixth image don't have the traffic sign perfectly cropped. In this sense, these images differ from the dataset for which the model was trained. Because of this, the trained model for traffic signals should have difficulty classifying these images. Some images have a small border, which can also make classification difficult. Finally, a small text can also make it difficult to classify.
+Some images are not centered and have texts on the plates. This may make it difficult for the classifier. The small rotation in the images can also be a problem.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-###### ***TODO***
-
 Here are the results of the prediction:
 				 											
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop      |    		Priority road						| 
-| Bumpy road	| 	Bumpy road	|
-| Right-of-way at the next intersection |	Right-of-way at the next intersection|
-| Road work			|   Wild animals crossing	|
-| Stop			|   Priority road  |
-| Speed limit (60km/h)		|   No passing	|
-| Bumpy road	|   	Dangerous curve to the right	|
-| Roundabout mandatory	|      Roundabout mandatory	|
-| No entry			|      No entry	|
-| Children crossing    	|  	Children crossing	|
+| Image			        |     Prediction	        					|      Correct?	        					| 
+|:---------------------:|:---------------------------------------------:|:---------------------------------------------:| 
+| Stop      | 		Stop				|  Y |
+| Bumpy road	| Bumpy road	| Y |
+| Right-of-way at the next intersection |Right-of-way at the next intersection| Y |
+| Road work			|   Road work	|   Y |
+| Stop			|   Speed limit (50km/h)  |   N |
+| Speed limit (60km/h)		|   Speed limit (60km/h)	|  Y |
+| Bumpy road	|   	Bumpy road	|   Y |
+| Roundabout mandatory	|      End of no passing by vehicles over 3.5 metric tons	| N |
+| No entry			|      No entry	|  Y |
+| Children crossing    	|  	Children crossing	| Y |
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 8 of the 10 traffic signs, which gives an accuracy of 80%. This is lower then we obtained for the testing set but I considered a good result. It can be improved with others techniques like image augmentation.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-###### ***TODO***
+The code for making predictions on my final model is located in the 19th cell of the Ipython 
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+**For the first image**, the model is absolutely sure that this is a stop sign (probability of 1.0), and the image does contain a stop sign. The top five soft max probabilities were:
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+Stop: 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (50km/h): 0.00%
+Speed limit (60km/h): 0.00%
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+**For the second image**:
+
+Bumpy road: 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (50km/h): 0.00%
+Speed limit (60km/h): 0.00%
+
+**For the third image**:
+
+Right-of-way at the next intersection: 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (50km/h): 0.00%
+Speed limit (60km/h): 0.00%
+
+**For the forth image**:
+
+Road work: 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (50km/h): 0.00%
+Speed limit (60km/h): 0.00%
 
 
-For the second image ... 
+**For the fifth image**:
 
+Speed limit (50km/h): 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (60km/h): 0.00%
+Speed limit (70km/h): 0.00%
+
+**For the sixth image**:
+
+Speed limit (60km/h): 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (50km/h): 0.00%
+Speed limit (70km/h): 0.00%
+
+
+**For the seventh image**:
+
+Bumpy road: 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (50km/h): 0.00%
+Speed limit (60km/h): 0.00%
+
+**For the eighth image**:
+
+End of no passing by vehicles over 3.5 metric tons: 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (50km/h): 0.00%
+Speed limit (60km/h): 0.00%
+
+**For the ninth image**:
+
+No entry: 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (50km/h): 0.00%
+Speed limit (60km/h): 0.00%
+
+**For the tenth image**:
+
+Children crossing: 100.00%
+Speed limit (20km/h): 0.00%
+Speed limit (30km/h): 0.00%
+Speed limit (50km/h): 0.00%
+Speed limit (60km/h): 0.00%
+
+The model seems to be confusing the speed limit plates with the other plates. There are many explanations for these results. The dataset is not balanced and there are more plates of this type than the others. Another explanation is that the model is overfitting. Despite that, the model hit 80% of the images.
