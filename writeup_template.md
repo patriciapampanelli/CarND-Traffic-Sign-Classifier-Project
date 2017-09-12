@@ -57,12 +57,10 @@ signs data set:
 I decided experiment these preprocessing techniques that are very common in classification problems.
 
 - Preprocessing steps used in the final solution:
-	- Contrast Limited Adaptive Histogram Equalization (CLAHE) (it is not used in the final solution)
+	- Contrast Limited Adaptive Histogram Equalization (CLAHE)
 	    - [skimage.exposure.equalize_adapthist](http://scikit-image.org/docs/dev/api/skimage.exposure.html#skimage.exposure.equalize_adapthist)
 
 - *Other images processing techniques not used in the final solution*:
-	- Contrast Limited Adaptive Histogram Equalization (CLAHE) (it is not used in the final solution)
-	    - [skimage.exposure.equalize_adapthist](http://scikit-image.org/docs/dev/api/skimage.exposure.html#skimage.exposure.equalize_adapthist)
 	- Converts input images from RGB to Grayscale using TensorFlow
 		- [tf.image.rgb_to_grayscale](https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/image/rgb_to_grayscale)
 	- Median filter:
