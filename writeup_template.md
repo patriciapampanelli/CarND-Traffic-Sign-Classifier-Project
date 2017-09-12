@@ -166,7 +166,7 @@ I used these images in order to evaluate the proposed model:
 
 <img src="./data/image01.jpg" width="75" alt="Stop"> <img src="./data/image02.jpg" width="75" alt="Children crossing"> <img src="./data/image03.jpg" width="75" alt="Bumpy road"> <img src="./data/image04.jpg" width="75" alt="Right-of-way at the next intersection"> <img src="./data/image05.jpg" width="75" alt="Road work"> <img src="./data/image06.jpg" width="75" alt="Stop"> <img src="./data/image07.jpg" width="75" alt="Speed limit (60km/h)"> <img src="./data/image08.jpg" width="75" alt="Bumpy road"> <img src="./data/image09.jpg" width="75" alt="Roundabout mandatory"> <img src="./data/image10.jpg" width="75" alt="No entry">
 
-**TODO**
+Some images are not centered and have texts on the plates. This may make it difficult for the classifier. The small rotation in the images can also be a problem.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
