@@ -173,10 +173,10 @@ I used these images in order to evaluate the proposed model:
 Here are the results of the prediction:
 				 											
 | Image			        |     Prediction	        					|      Correct?	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop      |    		Stop						|  Y |
-| Bumpy road	| 	Bumpy road	|  Y |
-| Right-of-way at the next intersection |	Right-of-way at the next intersection|   Y |
+|:---------------------:|:---------------------------------------------:|:---------------------------------------------:| 
+| Stop      | 		Stop				|  Y |
+| Bumpy road	| Bumpy road	| Y |
+| Right-of-way at the next intersection |Right-of-way at the next intersection| Y |
 | Road work			|   Road work	|   Y |
 | Stop			|   Speed limit (50km/h)  |   N |
 | Speed limit (60km/h)		|   Speed limit (60km/h)	|  Y |
